@@ -1,0 +1,63 @@
+"0","library(RANN)"
+"2","程辑包‘RANN’是用R版本3.5.1 来建造的"
+"0","library(boot)"
+"0","library(energy)"
+"2","程辑包‘energy’是用R版本3.5.1 来建造的"
+"0","library(Ball)"
+"2","程辑包‘Ball’是用R版本3.5.1 来建造的"
+"2","载入需要的程辑包：gam
+"
+"2","程辑包‘gam’是用R版本3.5.1 来建造的"
+"2","载入需要的程辑包：splines
+"
+"2","载入需要的程辑包：foreach
+"
+"2","程辑包‘foreach’是用R版本3.5.1 来建造的"
+"2","Loaded gam 1.16
+
+"
+"2","载入需要的程辑包：survival
+"
+"2","
+载入程辑包：‘survival’
+
+"
+"2","The following object is masked from ‘package:boot’:
+
+    aml
+
+"
+"2","载入需要的程辑包：mvtnorm
+"
+"0","m <- 1e3; k<-3; p<-2; mu <- 0.5; su <- 0.75; set.seed(12345)"
+"0","n1 <- n2 <- 50; R<-999; n <- n1+n2; N = c(n1,n2)"
+"0","n3 <- 10; n4 <-100; M <- c(n3,n4)  #Unbalanced samples"
+"0","Tn <- function(z, ix, sizes,k) {"
+"0","   n1 <- sizes[1]; n2 <- sizes[2]; n <- n1 + n2"
+"0","   if(is.vector(z)) z <- data.frame(z,0);"
+"0","   z <- z[ix, ];"
+"0","   NN <- nn2(data=z, k=k+1) # what's the first column?"
+"0","   block1 <- NN$nn.idx[1:n1,-1]"
+"0","   block2 <- NN$nn.idx[(n1+1):n,-1]"
+"0","   i1 <- sum(block1 < n1 + .5); i2 <- sum(block2 > n1+.5)"
+"0","   (i1 + i2) / (k * n)"
+"0","}"
+"0","eqdist.nn <- function(z,sizes,k){"
+"0","  boot.obj <- boot(data=z,statistic=Tn,R=R,"
+"0","  sim = ""permutation"", sizes = sizes,k=k)"
+"0","  ts <- c(boot.obj$t0,boot.obj$t)"
+"0","  p.value <- mean(ts>=ts[1])"
+"0","  list(statistic=ts[1],p.value=p.value)"
+"0","}"
+"0","#Unequal variances and equal expectations"
+"0","p.values1 <- matrix(NA,m,3)"
+"0","for(i in 1:m){"
+"0","  x <- matrix(rnorm(n1*p),ncol=p);"
+"0","  y <- cbind(rnorm(n2),rnorm(n2,sd=su));"
+"0","  z <- rbind(x,y)"
+"0","  p.values1[i,1] <- eqdist.nn(z,N,k)$p.value"
+"0","  p.values1[i,2] <- eqdist.etest(z,sizes=N,R=R)$p.value"
+"0","  p.values1[i,3] <- bd.test(x=x,y=y,R=999,seed=i*12345)$p.value"
+"0","}"
+"2","
+"
