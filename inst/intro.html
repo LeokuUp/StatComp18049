@@ -1494,9 +1494,9 @@ x2&lt;-<span class="kw">sample</span>(<span class="dv">10</span><span class="op"
 <pre><code>## Warning: 程辑包'microbenchmark'是用R版本3.5.1 来建造的</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ts &lt;-<span class="st"> </span><span class="kw">microbenchmark</span>(<span class="dt">chisq=</span><span class="kw">chisq.test</span>(x1,x2),<span class="dt">simple_chitest=</span><span class="kw">simple_chitest</span>(x1,x2))
 <span class="kw">summary</span>(ts)[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</code></pre></div>
-<pre><code>##             expr      lq  median      uq
-## 1          chisq 516.446 552.224 632.668
-## 2 simple_chitest 355.779 368.446 397.112</code></pre>
+<pre><code>##             expr      lq  median       uq
+## 1          chisq 512.890 522.446 550.4460
+## 2 simple_chitest 350.668 361.335 373.5565</code></pre>
 </div>
 <div id="question-5" class="section level2">
 <h2>question 5</h2>
@@ -1590,7 +1590,7 @@ ptm &lt;-<span class="st"> </span><span class="kw">proc.time</span>()
 ## 10 13  5  7  7  8 11  4 11  5 13</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>ptm</code></pre></div>
 <pre><code>## 用户 系统 流逝 
-## 0.05 0.00 0.05</code></pre>
+## 0.05 0.00 0.04</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#chisq.test</span>
 ptm &lt;-<span class="st"> </span><span class="kw">proc.time</span>()
 <span class="kw">chisq.test</span>(x1,x2)</code></pre></div>
@@ -1601,7 +1601,7 @@ ptm &lt;-<span class="st"> </span><span class="kw">proc.time</span>()
 ## X-squared = 81.333, df = 81, p-value = 0.4687</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>ptm</code></pre></div>
 <pre><code>## 用户 系统 流逝 
-##    0    0    0</code></pre>
+## 0.01 0.00 0.02</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##simple_chitest
 ptm &lt;-<span class="st"> </span><span class="kw">proc.time</span>()
 <span class="kw">simple_chitest2</span>(x1,x2)</code></pre></div>
@@ -1612,13 +1612,13 @@ ptm &lt;-<span class="st"> </span><span class="kw">proc.time</span>()
 ## = 81.333, p-value = 0.4687</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>ptm</code></pre></div>
 <pre><code>## 用户 系统 流逝 
-## 0.04 0.00 0.05</code></pre>
+## 0.03 0.00 0.05</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">microbenchmark</span>(<span class="kw">simple_table</span>(x1,x2))</code></pre></div>
 <pre><code>## Unit: milliseconds
-##                  expr      min       lq     mean   median       uq
-##  simple_table(x1, x2) 23.20361 25.10872 27.45725 26.32628 28.35629
-##       max neval
-##  49.87878   100</code></pre>
+##                  expr      min       lq    mean   median       uq      max
+##  simple_table(x1, x2) 20.68849 23.05116 26.1475 24.56517 27.00095 81.85574
+##  neval
+##    100</code></pre>
 </div>
 </div>
 
