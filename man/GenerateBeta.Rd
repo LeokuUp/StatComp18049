@@ -7,24 +7,27 @@
 GenerateBeta(n, a, b)
 }
 \arguments{
-\item{n}{Generate a random sample of size}
+\item{n}{The sise of random sample we want to generateBeta}
 
-\item{a}{The first parameter of distribution function}
+\item{a}{The first parameter of Beta distribution function}
 
-\item{b}{The second parameter of distribution function}
+\item{b}{The second parameter of Beta distribution function}
 }
 \value{
-y The random sample has been Generated
+y The random sample has been Generated, which is a vector
 }
 \description{
-Write a function to generate a random sample of size n from the Beta(a, b)
-distribution by the acceptance-rejection method. Generate a random sampleof size 1000 from
+question3.7(Statistical Computing with R):Write a function to generate a random sample of size n from the Beta(a, b)
+distribution by the acceptance-rejection method. Generate a random sample of size 1000 from
 the Beta(3,2) distribution. Graph the histogram of the sample with the theoretical Beta(3,2)
 density superimposed
+
+Here we use Acceptance-Rejection Method to generate a random sample, and And draw the density function of beta distribution
+and compare them.
 }
 \examples{
 y<-GenerateBeta(1000,3,2)
 hist(y,prob = TRUE,ylim=c(0,2))
 x <- seq(0, 1, .01)
-lines(x, x^2*(1-x)^1/beta(3,2))
+lines(x, x^2*(1-x)/beta(3,2))
 }

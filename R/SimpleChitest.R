@@ -2,14 +2,16 @@
 #'@description Make a faster version of chisq.test() that only computes the chi-square test statistic
 #' when the input is two numeric vectors with no missing values. You can try simplifying chisq.test()
 #'or by coding from the mathematical de finition. Here we also have the function SimpleTable
+#'@description This method simplifies the traditional Chi-square test. An example is given to
+#'compare the computational speed of this method with that of the traditional method.
 #' @param x numeric vector with no missing values
 #' @param y numeric vector with no missing values
 #' @return STATISTIC the chi-square test statistic
 #' @return p.value   the P-value of chi-square test statistic
 #' @export SimpleChitest
 #' @examples
-#' x1<-sample(1:10,1000,replace = T)
-#' x2<-sample(10:20,1000,replace = T)
+#' x1<-sample(1:10,1000,replace=TRUE)
+#' x2<-sample(10:20,1000,replace=TRUE)
 #' SimpleChitest(x1,x2)
 #' library(microbenchmark)
 #' ts <- microbenchmark(chisq=chisq.test(x1,x2),simple_chitest=SimpleChitest(x1,x2))

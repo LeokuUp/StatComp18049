@@ -7,7 +7,8 @@
 GEST(distribution = "lognormal", m = 1000, n = 1000)
 }
 \arguments{
-\item{distribution}{should be 'lognormal','uniform' or 'bernoulli',}
+\item{distribution}{it must be 'lognormal','uniform' or 'bernoulli',or Otherwise the program will
+report errors."The distribution function you entered is incorrect "}
 
 \item{m}{the length of random vector x}
 
@@ -17,10 +18,14 @@ GEST(distribution = "lognormal", m = 1000, n = 1000)
 g.est the static of g.est
 }
 \description{
-The Gini ratio is applied in economics to measure inequality in income distribution.
-Note that G can be written in terms of the order statistics x
+question 6.9(Statistical Computing with R):Let X be a non-negative random variable The Gini ratio
+is applied in economics to measure inequality in income distribution.
+Note that G can be written in terms of the order statistics x, if X is standard lognormal.Repeat the procedure
+ for the uniform distribution and Bernoulli(0.1). Also construct density histograms of the replicates in each
+ case.
 }
 \examples{
 GEST(distribution='lognormal',m=1e3,n=1e3)
-hist(g.hat,freq = F, main = "standard lognormal" )
+GEST(distribution='uniform',m=1e3,n=1e3)
+GEST(distribution='bernoulli',m=1e3,n=1e3)
 }
