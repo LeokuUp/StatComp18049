@@ -117,8 +117,8 @@ lines(x, x^2*(1-x)^1/beta(3,2))
 
 ##question3.12
 Simulate a continuous Exponential-Gamma mixture. Suppose that the rate
-parameter has Gamma(r, ??) distribution and Y has Exp(??) distribution.
-That is, (Y |?? = ??) ?? fY (y|??) = ??e?????y. Generate 1000 random observations
+parameter has $Gamma(r, \beta)$ distribution and Y has Exp distribution.
+That is,$(Y|\Lambda=\lambda)~f_{y}(y|\lambda)=\lambda e^{-\lambda y}$ . Generate 1000 random observations
 from this mixture with r = 4 and ?? = 2.
 ```{r}
 set.seed(12345)
