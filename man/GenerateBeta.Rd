@@ -28,6 +28,6 @@ and compare them.
 \examples{
 y<-GenerateBeta(1000,3,2)
 hist(y,prob = TRUE,ylim=c(0,2))
-x <- seq(0, 1, .01)
+x <- seq(0, 1, 0.01)
 lines(x, x^2*(1-x)/beta(3,2))
 }
